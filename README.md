@@ -1,6 +1,6 @@
 # test-game-dummy
   
-Тестовое задание для Hypetrain на позицию Unity developer.
+Тестовое задание от Hypetrain на позицию Unity developer.
 
 Выполненные требования:
 
