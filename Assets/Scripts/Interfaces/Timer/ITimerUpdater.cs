@@ -1,4 +1,4 @@
 ﻿public interface ITimerUpdater
 {
-    void SaveUnlockTime(LockTimer lockTimer);
+    void SaveUnlockTime(Timer lockTimer);
 }

@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6649768588412941203}
+  - component: {fileID: 1503405735312376031}
   m_Layer: 0
   m_Name: Buttons
   m_TagString: Untagged
@@ -16,8 +16,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6649768588412941203
-Transform:
+--- !u!224 &1503405735312376031
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -33,6 +33,11 @@ Transform:
   m_Father: {fileID: 1468044494741892060}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -980, y: -1820}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &643993736331884360
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +167,7 @@ RectTransform:
   m_Children:
   - {fileID: 36435099269327098}
   - {fileID: 509352069982895532}
-  m_Father: {fileID: 6649768588412941203}
+  m_Father: {fileID: 1503405735312376031}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -245,9 +250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c13a61810bf04fa598e71d6319563ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockTimer: {fileID: 6041410536173276292}
   multiplierForce: 2
   multiplyingButton: {fileID: 719254786738029004}
-  lockTimer: {fileID: 6041410536173276292}
   anim: {fileID: 3145521752354119845}
 --- !u!95 &3145521752354119845
 Animator:
@@ -829,7 +834,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2892558964224771141}
-  - {fileID: 6649768588412941203}
+  - {fileID: 1503405735312376031}
   m_Father: {fileID: 1614858271920672897}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -931,7 +936,7 @@ RectTransform:
   m_LocalScale: {x: 0.0078125, y: 0.0078125, z: 0.0078125}
   m_Children:
   - {fileID: 545566668141914239}
-  m_Father: {fileID: 6649768588412941203}
+  m_Father: {fileID: 1503405735312376031}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1014,8 +1019,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090ede342a5994f1e96df8eadc6cbdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addedCurrencyCount: 1
   lockTimer: {fileID: 0}
+  addedCurrencyCount: 1
   anim: {fileID: 7027269667242056488}
 --- !u!95 &7027269667242056488
 Animator:
@@ -1274,7 +1279,7 @@ RectTransform:
   m_Children:
   - {fileID: 8317855449950036048}
   - {fileID: 1816082231407324250}
-  m_Father: {fileID: 6649768588412941203}
+  m_Father: {fileID: 1503405735312376031}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1357,8 +1362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090ede342a5994f1e96df8eadc6cbdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addedCurrencyCount: 100
   lockTimer: {fileID: 484371435791920566}
+  addedCurrencyCount: 100
   anim: {fileID: 1902018346725151847}
 --- !u!95 &1902018346725151847
 Animator:

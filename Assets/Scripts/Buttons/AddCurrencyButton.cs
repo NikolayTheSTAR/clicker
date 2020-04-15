@@ -17,11 +17,10 @@ public class AddCurrencyButton : MonoBehaviour, IButton
         {
             if (anim) anim.SetBool("Pressed", value);
 
-            if (value) Locked = true;
-
             pressed = value;
         }
     }
+
     private bool locked;
     public bool Locked
     {
@@ -31,22 +30,29 @@ public class AddCurrencyButton : MonoBehaviour, IButton
         }
         set
         {
-            if (lockTimer)
+            if (anim)
             {
-                if (anim)
-                {
-                    anim.SetBool("Pressed", false);
-                    anim.SetBool("Locked", value);
-                }
-
-                if (value) lockTimer.StartTimer();
-
-                locked = value;
+                anim.SetBool("Pressed", false);
+                anim.SetBool("Locked", value);
             }
+
+            locked = value;
+        }
+    }
+    [SerializeField] private Timer lockTimer;
+    public Timer LockTimer
+    {
+        get
+        {
+            return lockTimer;
+        }
+        set
+        {
+            lockTimer = value;
         }
     }
 
-    private float multiplierForce = 1f;
+    private float multiplierForce = 1;
     public float MultiplierForce
     {
         get
@@ -66,7 +72,6 @@ public class AddCurrencyButton : MonoBehaviour, IButton
     #region Private
 
     [SerializeField] private int addedCurrencyCount;
-    [SerializeField] private LockTimer lockTimer;
     [SerializeField] private Animator anim;
 
     #endregion // Private
@@ -78,7 +83,7 @@ public class AddCurrencyButton : MonoBehaviour, IButton
         if (!locked)
         {
             Pressed = true;
-            AddCurrency();
+            Event();
         }
     }
 
@@ -89,8 +94,9 @@ public class AddCurrencyButton : MonoBehaviour, IButton
 
     #endregion // Unity Methods
 
-    private void AddCurrency()
+    public void Event()
     {
-        DataController.dataController.SoftCurrency += (int)(addedCurrencyCount * multiplierForce);
+        BonusController.bonusController.DoBonus(BonusTypes.AddCurrency, (int)(addedCurrencyCount * multiplierForce));
+        if (lockTimer) LockManager.SetLock(this, true);
     }
 }

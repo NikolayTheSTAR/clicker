@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Класс представляющий таймер блокировки кнопки
+/// Класс представляющий таймер
 /// </summary>
-public class LockTimer : MonoBehaviour, ITimer
+public class Timer : MonoBehaviour, ITimer
 {
     #region Protepties
 
@@ -79,7 +79,7 @@ public class LockTimer : MonoBehaviour, ITimer
     #region Private
 
     private Text timerText;
-    private IButton button;
+    //private IButton button;
 
     [SerializeField, Range(0, 59)]
     private sbyte lockTimeHour, lockTimeMinute, lockTimeSecond;
@@ -91,15 +91,6 @@ public class LockTimer : MonoBehaviour, ITimer
     private void Awake()
     {
         timerText = GetComponent<Text>();
-
-        try
-        {
-            button = transform.GetComponentInParent<IButton>();
-        }
-        catch
-        {
-            Debug.Log("IButton not found");
-        }
     }
 
     #endregion // Unity Methods
@@ -130,7 +121,7 @@ public class LockTimer : MonoBehaviour, ITimer
 
         Working = true;
 
-        button.Locked = true;
+        LockManager.SetLock(this, true);
     }
 
     public void EndTimer()
@@ -138,7 +129,7 @@ public class LockTimer : MonoBehaviour, ITimer
         timerText.text = "";
 
         timerText.enabled = false;
-        button.Locked = false;
+        LockManager.SetLock(this, false);
 
         Working = false;
     }

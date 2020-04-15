@@ -40,10 +40,23 @@ public class SetMultiplierButton : MonoBehaviour, IButton
                 }
 
                 if (value) lockTimer.StartTimer();
-                else RemoveMulti();
+                else BonusController.bonusController.RemoveBonus(BonusTypes.SetMultiplier, multiplyingButton);
 
                 locked = value;
             }
+        }
+    }
+
+    [SerializeField] private Timer lockTimer;
+    public Timer LockTimer
+    {
+        get
+        {
+            return lockTimer;
+        }
+        set
+        {
+            lockTimer = value;
         }
     }
 
@@ -53,7 +66,6 @@ public class SetMultiplierButton : MonoBehaviour, IButton
 
     [SerializeField] private float multiplierForce;
     [SerializeField] private AddCurrencyButton multiplyingButton;
-    [SerializeField] private LockTimer lockTimer;
     [SerializeField] private Animator anim;
 
     #endregion // Private
@@ -65,7 +77,7 @@ public class SetMultiplierButton : MonoBehaviour, IButton
         if (!locked)
         {
             Pressed = true;
-            SetMulti();
+            Event();
         }
     }
 
@@ -76,13 +88,8 @@ public class SetMultiplierButton : MonoBehaviour, IButton
 
     #endregion // Unity Methods
 
-    private void SetMulti()
+    public void Event()
     {
-        multiplyingButton.MultiplierForce = multiplierForce;
-    }
-
-    private void RemoveMulti()
-    {
-        multiplyingButton.MultiplierForce = 1;
+        BonusController.bonusController.DoBonus(BonusTypes.SetMultiplier, multiplyingButton, (int)multiplierForce);
     }
 }

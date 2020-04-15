@@ -16,15 +16,15 @@ public class TimerUpdater : MonoBehaviour, ITimerUpdater
     #region Protepties
 
     [SerializeField]
-    private LockTimer add100Timer;
+    private Timer add100Timer;
     [SerializeField]
-    private LockTimer x2Timer;
+    private Timer x2Timer;
 
     #endregion // Properties
 
     #region Private
 
-    private List<LockTimer> timers = new List<LockTimer>();
+    private List<Timer> timers = new List<Timer>();
 
     #endregion // Private
 
@@ -47,11 +47,11 @@ public class TimerUpdater : MonoBehaviour, ITimerUpdater
 
     private void FixedUpdate()
     {
-        foreach (LockTimer t in timers)
+        foreach (Timer t in timers)
         {
             if (t.Working)
             {
-                t.Millisecond -= Time.deltaTime;
+                t.Millisecond -= Time.fixedDeltaTime;
                 t.Millisecond = (float)Math.Round(t.Millisecond, 2);
 
                 if (t.Millisecond < 0) t.TimerTick();
@@ -91,7 +91,7 @@ public class TimerUpdater : MonoBehaviour, ITimerUpdater
         }
     }
 
-    public void SaveUnlockTime(LockTimer lockTimer)
+    public void SaveUnlockTime(Timer lockTimer)
     {
         DateTime unlockTime = DateTime.Now.Add(lockTimer.GetTime());
 

@@ -47,6 +47,7 @@ public class ControllerLocator : MonoBehaviour, IServiceLocator
         {
             AddService<IUIController>();
             AddService<IDataController>();
+            AddService<IBonusController>();
 
             foreach (var service in container)
                 Debug.LogFormat("Service {0} successfuly created", service.Value.name);
