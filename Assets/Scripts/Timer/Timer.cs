@@ -79,7 +79,7 @@ public class Timer : MonoBehaviour, ITimer
     #region Private
 
     private Text timerText;
-    //private IButton button;
+    private ITimerController timerController;
 
     [SerializeField, Range(0, 59)]
     private sbyte lockTimeHour, lockTimeMinute, lockTimeSecond;
@@ -91,6 +91,11 @@ public class Timer : MonoBehaviour, ITimer
     private void Awake()
     {
         timerText = GetComponent<Text>();
+    }
+
+    private void Start()
+    {
+        timerController = FindObjectOfType<TimerController>();
     }
 
     #endregion // Unity Methods
@@ -106,7 +111,7 @@ public class Timer : MonoBehaviour, ITimer
             UpdateTimerText();
             timerText.enabled = true;
 
-            TimerUpdater.timerUpdater.SaveUnlockTime(this);
+            timerController.SaveUnlockTime(this);
 
             Working = true;
         }

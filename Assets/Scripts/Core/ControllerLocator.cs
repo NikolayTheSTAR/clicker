@@ -47,6 +47,7 @@ public class ControllerLocator : MonoBehaviour, IServiceLocator
         {
             AddService<IUIController>();
             AddService<IDataController>();
+            AddService<ITimerController>();
             AddService<IBonusController>();
 
             foreach (var service in container)

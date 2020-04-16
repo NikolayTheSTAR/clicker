@@ -250,7 +250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c13a61810bf04fa598e71d6319563ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockTimer: {fileID: 6041410536173276292}
+  anim: {fileID: 3145521752354119845}
+  locking: 1
   multiplierForce: 2
   multiplyingButton: {fileID: 719254786738029004}
   anim: {fileID: 3145521752354119845}
@@ -563,6 +564,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   softCurrency: {fileID: 2653167821582454697}
   donateCurrency: {fileID: 0}
+  add100Timer: {fileID: 3104267443794638735}
+  multiplierX2Timer: {fileID: 8480639138597803674}
 --- !u!1 &1614858272072211955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,9 +1022,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090ede342a5994f1e96df8eadc6cbdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockTimer: {fileID: 0}
-  addedCurrencyCount: 1
   anim: {fileID: 7027269667242056488}
+  locking: 0
+  addedCurrencyCount: 1
 --- !u!95 &7027269667242056488
 Animator:
   serializedVersion: 3
@@ -1137,7 +1140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7157978139654155748
 Transform:
   m_ObjectHideFlags: 0
@@ -1164,8 +1167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d4a03311d7e4407bc6a7d28e896d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  add100Timer: {fileID: 484371435791920566}
-  x2Timer: {fileID: 6041410536173276292}
 --- !u!1 &8319616488575061660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,9 +1363,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090ede342a5994f1e96df8eadc6cbdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockTimer: {fileID: 484371435791920566}
-  addedCurrencyCount: 100
   anim: {fileID: 1902018346725151847}
+  locking: 1
+  addedCurrencyCount: 100
 --- !u!95 &1902018346725151847
 Animator:
   serializedVersion: 3

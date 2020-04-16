@@ -11,7 +11,6 @@ public class DataController : MonoBehaviour, IDataController, ICurrencyData, ITi
     #region Static
 
     public static bool Started;
-    public static DataController dataController;
 
     #endregion //Static
 
@@ -80,6 +79,7 @@ public class DataController : MonoBehaviour, IDataController, ICurrencyData, ITi
 
     private IServiceLocator ServiceLocator { get; set; }
     private IUIController uiController { get; set; }
+
     [ShowNonSerializedField] private int currentScene;
 
     #endregion //Private
@@ -103,8 +103,6 @@ public class DataController : MonoBehaviour, IDataController, ICurrencyData, ITi
 
     public void Init(IServiceLocator serviceLocator)
     {
-        dataController = this;
-
         ServiceLocator = serviceLocator;
         uiController = ServiceLocator.GetService<IUIController>();
 

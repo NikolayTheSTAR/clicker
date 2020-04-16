@@ -2,55 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddCurrencyButton : MonoBehaviour, IButton
+public class AddCurrencyButton : Button
 {
     #region Properties
-
-    private bool pressed;
-    public bool Pressed
-    {
-        get
-        {
-            return pressed;
-        }
-        set
-        {
-            if (anim) anim.SetBool("Pressed", value);
-
-            pressed = value;
-        }
-    }
-
-    private bool locked;
-    public bool Locked
-    {
-        get
-        {
-            return locked;
-        }
-        set
-        {
-            if (anim)
-            {
-                anim.SetBool("Pressed", false);
-                anim.SetBool("Locked", value);
-            }
-
-            locked = value;
-        }
-    }
-    [SerializeField] private Timer lockTimer;
-    public Timer LockTimer
-    {
-        get
-        {
-            return lockTimer;
-        }
-        set
-        {
-            lockTimer = value;
-        }
-    }
 
     private float multiplierForce = 1;
     public float MultiplierForce
@@ -72,9 +26,10 @@ public class AddCurrencyButton : MonoBehaviour, IButton
     #region Private
 
     [SerializeField] private int addedCurrencyCount;
-    [SerializeField] private Animator anim;
 
     #endregion // Private
+
+    public override ButtonTypes Type { get; set; } = ButtonTypes.AddCurrency100;
 
     #region Unity Methods
 
@@ -94,9 +49,9 @@ public class AddCurrencyButton : MonoBehaviour, IButton
 
     #endregion // Unity Methods
 
-    public void Event()
+    public override void Event()
     {
-        BonusController.bonusController.DoBonus(BonusTypes.AddCurrency, (int)(addedCurrencyCount * multiplierForce));
-        if (lockTimer) LockManager.SetLock(this, true);
+        bonusController.DoBonus(BonusTypes.AddCurrency, (int)(addedCurrencyCount * multiplierForce));
+        LockManager.SetLock(this, true);
     }
 }

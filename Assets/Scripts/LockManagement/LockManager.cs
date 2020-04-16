@@ -1,10 +1,12 @@
 ﻿public abstract class LockManager
 {
-    public static void SetLock(IButton button, bool value)
+    public static void SetLock(Button button, bool value)
     {
-        if (value && button.LockTimer)
+        Timer lockTimer = button.transform.GetComponentInChildren<Timer>();
+
+        if (value && lockTimer)
         {
-            button.LockTimer.StartTimer();
+            lockTimer.StartTimer();
             button.Locked = true;
         }
     }

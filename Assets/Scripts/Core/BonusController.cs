@@ -3,15 +3,11 @@ using System.Collections;
 
 public class BonusController : MonoBehaviour, IBonusController
 {
-    #region Static
-
-    public static BonusController bonusController;
-
-    #endregion // Static
-
     #region Private
 
     private Bonus bonus;
+    private IServiceLocator ServiceLocator { get; set; }
+    private IDataController dataController { get; set; }
 
     #endregion // Private
 
@@ -22,7 +18,7 @@ public class BonusController : MonoBehaviour, IBonusController
             case BonusTypes.AddCurrency:
                 bonus.AddCurrency(value);
                 break;
-            case BonusTypes.SetMultiplier:
+            case BonusTypes.Multiplier:
                 Debug.LogWarning("Button not found");
                 break;
         }
@@ -35,7 +31,7 @@ public class BonusController : MonoBehaviour, IBonusController
             case BonusTypes.AddCurrency:
                 bonus.AddCurrency(value);
                 break;
-            case BonusTypes.SetMultiplier:
+            case BonusTypes.Multiplier:
                 bonus.SetMultiplier((AddCurrencyButton)changeObject, value);
                 break;
         }
@@ -48,7 +44,7 @@ public class BonusController : MonoBehaviour, IBonusController
             case BonusTypes.AddCurrency:
                 Debug.Log("Noimpossible remove bonus AddCurrency");
                 break;
-            case BonusTypes.SetMultiplier:
+            case BonusTypes.Multiplier:
                 bonus.RemoveMultiplier((AddCurrencyButton)changeObject);
                 break;
         }
@@ -56,9 +52,10 @@ public class BonusController : MonoBehaviour, IBonusController
 
     public void Init(IServiceLocator serviceLocator)
     {
-        bonusController = this;
+        ServiceLocator = serviceLocator;
+        dataController = ServiceLocator.GetService<IDataController>();
 
-        bonus = new Bonus();
+        bonus = new Bonus((DataController)dataController);
 
         DontDestroyOnLoad(this);
     }
@@ -66,9 +63,16 @@ public class BonusController : MonoBehaviour, IBonusController
 
 public class Bonus
 {
+    private DataController dataController;
+
+    public Bonus(IDataController dataController)
+    {
+        this.dataController = (DataController)dataController;
+    }
+
     public void AddCurrency(int value)
     {
-        DataController.dataController.SoftCurrency += value;
+        dataController.SoftCurrency += value;
     }
 
     public void SetMultiplier(AddCurrencyButton multiplyingButton, float value)
@@ -85,5 +89,5 @@ public class Bonus
 public enum BonusTypes
 {
     AddCurrency,
-    SetMultiplier
+    Multiplier
 }
