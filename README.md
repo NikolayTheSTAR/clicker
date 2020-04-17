@@ -11,6 +11,7 @@
 * Внедрён BonusController
 * Удаление синглтона
 * Динамическое создание IBonusController и ITimerController
+* Отображение билда
 
 ---
 11 - 13 апреля (3 дня)
