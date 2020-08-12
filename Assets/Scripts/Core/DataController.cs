@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using NaughtyAttributes;
 using Utility;
 
 public class DataController : MonoBehaviour, IDataController, ICurrencyData, ITimeData, ISaveManager
@@ -17,7 +16,6 @@ public class DataController : MonoBehaviour, IDataController, ICurrencyData, ITi
     #region Properties
 
     private long softCurrency;
-    [ShowNativeProperty]
     public long SoftCurrency
     {
         get
@@ -32,7 +30,6 @@ public class DataController : MonoBehaviour, IDataController, ICurrencyData, ITi
     }
 
     private long donateCurrency;
-    [ShowNativeProperty]
     public long DonateCurrency
     {
         get
@@ -80,7 +77,7 @@ public class DataController : MonoBehaviour, IDataController, ICurrencyData, ITi
     private IServiceLocator ServiceLocator { get; set; }
     private IUIController uiController { get; set; }
 
-    [ShowNonSerializedField] private int currentScene;
+    private int currentScene;
 
     #endregion //Private
 
